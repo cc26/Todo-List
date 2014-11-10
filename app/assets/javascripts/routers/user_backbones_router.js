@@ -8,5 +8,5 @@ Todo.Routers.UserBackbones = Backbone.Router.extend({
 		var signupView = new Todo.Views.UserBackbonesIndex();
 		signupView.render();
 		console.log("rendering");
-	} 
+	}
 });

@@ -5,13 +5,43 @@ Todo.Views.UserBackbonesIndex = Backbone.View.extend({
 
   events:{
   	'submit #signup-user-form':'saveUser',
-    'click #signin':'showForm',
+    'submit #signin-user-form':'loginUser',
+
+      'click #signin':'showForm',
     'click #signup':'showForm'
   },
 
   showForm:function(event){
     var formId = "#"+event.currentTarget.id+"-user-form";
     $(formId).show();
+  },
+
+
+  loginUser: function(event){
+      event.preventDefault();
+      var cur = event.currentTarget;
+
+
+      var values = {};
+      for(var i = 0; i < cur.length; i++){
+          if(cur[i].type != "submit"){
+              values[cur[i].name] = cur[i].value;
+          }
+      }
+
+      sessions.create(values,{
+          error : function(model, response){
+//              console.log(model);
+              console.log(response);
+          },
+          success: function(model, response){
+//              console.log(model);
+              console.log(response);
+
+              var userContentView = new Todo.Views.UserContent();
+              userContentView.render(response);
+          }
+      });
   },
 
   saveUser: function(event){

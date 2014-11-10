@@ -1,7 +1,8 @@
 Todo::Application.routes.draw do
   get "main/index"
 
-  resources :users  
+  resources :users
+  resources :sessions
   root to: 'main#index'
   # The priority is based upon order of creation:
   # first created -> highest priority.

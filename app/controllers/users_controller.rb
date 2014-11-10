@@ -1,5 +1,5 @@
 class UsersController < ApplicationController
-    respond_to :json
+  respond_to :json
 
   def index
     respond_with User.all
@@ -10,7 +10,7 @@ class UsersController < ApplicationController
   end
 
   def create
-  	puts(params[:user]);
+  	puts(params[:user])
     respond_with User.create(params[:user])
   end
 
