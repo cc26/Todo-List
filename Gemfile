@@ -7,6 +7,7 @@ gem 'rails', '3.2.17'
 gem 'bootstrap-sass', '2.1'
 gem 'bcrypt-ruby', '3.0.1'
 gem 'sqlite3'
+gem 'backbone-on-rails'
 
 
 # Gems used only for assets and not required

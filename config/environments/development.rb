@@ -34,4 +34,5 @@ Todo::Application.configure do
 
   # Expands the lines which load the assets
   config.assets.debug = true
+  I18n.enforce_available_locales = false
 end
