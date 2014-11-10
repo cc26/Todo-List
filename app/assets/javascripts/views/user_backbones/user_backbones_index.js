@@ -1,7 +1,7 @@
 
 Todo.Views.UserBackbonesIndex = Backbone.View.extend({
   el: "#user_form_template",
-  template: JST['user_backbones/index'],
+  template: JST['user_backbones/userform'],
 
   events:{
   	'submit #signup-user-form':'saveUser',
