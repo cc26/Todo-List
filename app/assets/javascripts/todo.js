@@ -4,7 +4,6 @@ window.Todo = {
   Views: {},
   Routers: {},
   initialize: function() {
-    alert('Hello from Backbone!');
     var router = new Todo.Routers.UserBackbones();
     Backbone.history.start();
   }

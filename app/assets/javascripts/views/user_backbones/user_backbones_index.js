@@ -4,13 +4,23 @@ Todo.Views.UserBackbonesIndex = Backbone.View.extend({
   template: JST['user_backbones/index'],
 
   events:{
-  	'submit .new_user-form':'saveUser'
+  	'submit #signup-user-form':'saveUser',
+    'click #signin':'showForm',
+    'click #signup':'showForm'
   },
+
+  showForm:function(event){
+    var formId = "#"+event.currentTarget.id+"-user-form";
+    $(formId).show();
+  },
+
   saveUser: function(event){
-  	event.preventDefault();	
+
+  	event.preventDefault();
   	var cur = event.currentTarget;
-  	console.log(cur[1].type =="submit" );
-  	var values = {};
+
+
+    var values = {};
   	for(var i = 0; i < cur.length; i++){
   		if(cur[i].type != "submit"){
   			values[cur[i].name] = cur[i].value;	
@@ -24,5 +34,5 @@ Todo.Views.UserBackbonesIndex = Backbone.View.extend({
       $(this.el).html(this.template());
       
       return this;
-  },
+  }
 });
