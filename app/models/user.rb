@@ -1,6 +1,7 @@
 class User < ActiveRecord::Base
   has_secure_password
   attr_accessible :email, :name
+  
   validates :name, presence: true
   email_rgex = /\A[\w+\-.]+@[\w\-.]+\.[a-z]+\z/i
 
