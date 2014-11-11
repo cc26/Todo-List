@@ -6,6 +6,7 @@ Todo::Application.configure do
   # since you don't have to restart the web server when you make code changes.
   config.cache_classes = false
 
+
   # Log error messages when you accidentally call methods on nil.
   config.whiny_nils = true
 
@@ -33,6 +34,6 @@ Todo::Application.configure do
   config.assets.compress = false
 
   # Expands the lines which load the assets
-  config.assets.debug = true
+  config.assets.debug = false
   I18n.enforce_available_locales = false
 end
