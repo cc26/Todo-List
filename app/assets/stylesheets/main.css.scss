@@ -1,3 +1,11 @@
 // Place all the styles related to the main controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+@import "bootstrap";
+
+body{
+  margin-left: auto;
+  margin-right: auto;
+  width: 70%;
+  background-color: #b0e0e6;
+}

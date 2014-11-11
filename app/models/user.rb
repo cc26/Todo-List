@@ -2,15 +2,16 @@ class User < ActiveRecord::Base
   has_secure_password
   attr_accessible :name, :email, :password, :password_confirmation
 
-  # validates :name, presence: true
-  # email_rgex = /\A[\w+\-.]+@[\w\-.]+\.[a-z]+\z/i
+  VALID_EMAIL_REGEX = /\A[\w+\-.]+@[\w\-.]+\.[a-z]+\z/i
 
-  # validates :name, presence: true, length:{maximum: 50}, format:{with: email_rgex}, 
-  # 			uniquess: {case_sensitive: false}
+  validates :email, presence:   true,
+            format:     { with: VALID_EMAIL_REGEX },
+            uniqueness: { case_sensitive: false }
+  # VALID_PASSWORD_REGEX = /(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9]).{6}$/
 
-  # password_rgex = /(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9]).{6}$/
-  # validate :password, precense: true, format:{password_rgex}
-  # validates :password_confirmation, presence: true
-  # before_save { |user| user.email = email.downcase }
+  validates :password, presence: true
+  validates :password_confirmation, presence: true
+  before_save { |user| user.email = email.downcase }
+  after_validation {self.errors.messages.delete(:password_digest)}
 
 end

@@ -31,15 +31,18 @@ Todo.Views.UserBackbonesIndex = Backbone.View.extend({
 
       sessions.create(values,{
           error : function(model, response){
-//              console.log(model);
+              console.log(model);
               console.log(response);
           },
           success: function(model, response){
-//              console.log(model);
-              console.log(response);
+               if(response['errors']){
+                   console.log(response);
+                   $('#error').html(response['errors']);
 
-              var userContentView = new Todo.Views.UserContent();
-              userContentView.render(response);
+               }else {
+                   var userContentView = new Todo.Views.UserContent();
+                   userContentView.render(response);
+               }
           }
       });
   },
@@ -57,7 +60,25 @@ Todo.Views.UserBackbonesIndex = Backbone.View.extend({
   		}
   	}
 	
-	users.create(values);    
+	users.create(values,{
+        error : function(model, response){
+            console.log("having error");
+
+            console.log(model);
+            console.log(response);
+        },
+        success: function(model, response){
+            if(response['errors']){
+                console.log(response);
+                $('#error').html(response['errors']);
+
+            }else {
+                var userContentView = new Todo.Views.UserContent();
+                userContentView.render(response);
+            }
+        }
+    });
+
   },
 
   render: function(){

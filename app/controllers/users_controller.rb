@@ -10,8 +10,18 @@ class UsersController < ApplicationController
   end
 
   def create
-  	puts(params[:user])
-    respond_with User.create(params[:user])
+    # begin
+      @user = User.create(params[:user])
+      errors = @user.errors.full_messages
+
+      if errors.size == 0
+        render json: @user
+      else
+        render json: {errors:errors}
+      end
+    # rescue
+    #    render json: {errors: "how to show error?"}, status: :forbidden
+    # end
   end
 
   def update

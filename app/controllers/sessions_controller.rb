@@ -13,10 +13,12 @@ class SessionsController < ApplicationController
     puts params
     puts params[:session][:name]
     user = User.find_by_name(params[:session][:name].downcase)
-    if user
-      render :json => user
-    else
+
+    if user==nil
+
       render :json => {:errors => "No such user"}
+    else
+      render :json => user
     end
   end
 
